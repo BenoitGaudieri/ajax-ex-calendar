@@ -21,10 +21,12 @@ $(document).ready(function () {
 
     // Buttons logic
     nextMonth.click(function () {
+        event.preventDefault();
         changeMonth(baseMonth, template, "add");
     });
 
     prevMonth.click(function () {
+        event.preventDefault();
         changeMonth(baseMonth, template, "subtract");
     });
 
@@ -64,7 +66,7 @@ function printMonth(template, date) {
         // set handlebars template
         var context = {
             class: "day " + "w" + thisDate.day(),
-            day: thisDate.format("DD"),
+            day: thisDate.format("D"),
             week: thisDate.format("ddd"),
             completeDate: thisDate.format("YYYY-MM-DD"),
         };

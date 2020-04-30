@@ -6,12 +6,10 @@
 
 body {
     font-family: "Relaway", sans-serif;
-
     background: linear-gradient(to right, #fdfbfb, #bcccdc 70%);
 }
 
 .container {
-    /* margin: 0 auto; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -20,12 +18,22 @@ body {
 }
 
 .button {
-    width: 100px;
+    margin: 30px;
+    width: 50px;
+}
+
+.button a {
+    text-decoration: none;
+    color: #000;
+}
+
+.button img {
+    vertical-align: middle;
 }
 
 .calendar {
     width: 800px;
-    height: 800px;
+    height: 750px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -37,25 +45,33 @@ body {
 
 .calendar--header {
     position: relative;
-    margin: 30px 0;
+    margin: 0 0 30px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
+    align-items: center;
 }
-
-/* .calendar--header {
-    margin: 30px;
-} */
 
 #locale-sel {
     margin-top: 30px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 40px;
+    /* right: 50%; */
+    width: 140px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    outline: none;
 }
 
 li.holiday {
     color: red;
+}
+
+.month {
+    width: 300px;
 }
 
 .month,
@@ -75,6 +91,7 @@ li.holiday {
     margin: 30px 0 15px;
     text-transform: capitalize;
     font-size: 20px;
+    border-bottom: 1px solid #000;
 }
 
 .weeks-label li:first-child {
