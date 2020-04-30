@@ -73,7 +73,7 @@ function printMonth(template, date) {
 
         // set handlebars template
         var context = {
-            class: "day",
+            class: "day " + "w" + thisDate.day(),
             day: thisDate.format("DD"),
             week: thisDate.format("dddd"),
             completeDate: thisDate.format("YYYY-MM-DD"),

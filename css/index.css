@@ -51,8 +51,40 @@ li.holiday {
     margin: 30px 0;
     list-style: none;
     display: grid;
-    gap: 1px;
-    grid-template-columns: repeat(7, 100px);
+    grid-template-columns: repeat(7, 1fr);
+    /* grid-gap: 1px; */
+}
+
+.w0:first-child {
+    grid-column: 1;
+}
+
+.w1:first-child {
+    grid-column: 2;
+}
+
+.w2:first-child {
+    grid-column: 3;
+}
+
+.w3:first-child {
+    grid-column: 4;
+}
+
+.w4:first-child {
+    grid-column: 5;
+}
+
+.w5:first-child {
+    grid-column: 6;
+}
+
+.w6:first-child {
+    grid-column: 7;
+}
+
+.w0 {
+    color: red;
 }
 
 .month-list li {
