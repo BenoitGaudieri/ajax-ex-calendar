@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Holiday Calendar 2018</title>
+    <!-- Shortcut icon -->
+    <link rel="shortcut icon" href="img/calendar.svg">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
         integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
@@ -16,6 +18,17 @@
 <body>
 
     <div class="container">
+
+        <select name="locale" id="locale-sel">
+            <option value="en">English</option>
+            <option value="it">Italian</option>
+            <option value="fr">French</option>
+            <option value="ja">Japanese</option>
+            <option value="es">Spanish</option>
+            <option value="el">Greek</option>
+            <option value="de">German</option>
+            <option value="zh-cn">Chinese</option>
+        </select>
 
         <button class="prev-month">Previous month</button>
 
@@ -36,7 +49,12 @@
     <!-- Template Handlebars -->
     <script id="day-template" type="text/x-handlebars-template">
         <li class="{{class}}" data-complete-date="{{completeDate}}">
-            {{day}}
+            <div class="day">
+                {{day}}
+            </div>
+            <div class="week">
+                {{week}}
+            </div>
         </li>
     
     </script>

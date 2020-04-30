@@ -14,15 +14,22 @@ $(document).ready(function () {
      */
     // Start month
     var baseMonth = moment("2018-01-01");
+
+    // Button references
     var prevMonth = $(".prev-month");
     var nextMonth = $(".next-month");
+
+    // Selector reference
+    var selector = $("#locale-sel");
 
     // Init handlebars
     var source = $("#day-template").html();
     var template = Handlebars.compile(source);
 
+    // Generate calendar
     genCalendar(baseMonth, template);
 
+    // Buttons logic
     nextMonth.click(function () {
         changeMonth(baseMonth, template, "add");
     });
@@ -31,51 +38,60 @@ $(document).ready(function () {
         changeMonth(baseMonth, template, "subtract");
     });
 
+    // Selector logic
+
+    selector.change(() => {
+        changeLocale(baseMonth, $("#locale-sel option:selected").val());
+        genCalendar(baseMonth, template);
+    });
     //
 }); // end Doc ready
+
 /**
  * Functions
  */
 
-//  Stampa a schermo i giorni del mese
+//  Display days of the month
 function printMonth(template, date) {
-    // Numero giorni del mese
+    // Moment.js method to get days num
     var daysInMonth = date.daysInMonth();
 
-    // setta header
+    // Set header
     $("h1").html(date.format("MMMM YYYY"));
 
-    // Imposta data attribute data
+    // Set data-attr with date as reference for holiday display
     $(".month").attr("data-this-date", date.format("YYYY-MM-DD"));
 
-    // genera giorni mese
+    // Loop on all days num
     for (let i = 0; i < daysInMonth; i++) {
-        // genera data con moment js
+        // Format date with moment.js
         var thisDate = moment({
             year: date.year(),
             month: date.month(),
             day: i + 1,
         });
 
-        // imposta dati template
+        // set handlebars template
         var context = {
             class: "day",
-            day: thisDate.format("DD MMMM"),
+            day: thisDate.format("DD"),
+            week: thisDate.format("dddd"),
             completeDate: thisDate.format("YYYY-MM-DD"),
         };
 
-        // compilare e aggiungere template
+        // compile and append template
         var html = template(context);
         $(".month-list").append(html);
     }
 }
 
-// Ottieni e stampa festività
+// display holidays
 function printHoliday(date) {
     // chiamata API
     $.ajax({
         url: "https://flynn.boolean.careers/exercises/api/holidays",
         method: "GET",
+        // api params from the date
         data: {
             year: date.year(),
             month: date.month(),
@@ -83,14 +99,17 @@ function printHoliday(date) {
         success: function (res) {
             var holidays = res.response;
 
+            // loop through all the response
             for (let i = 0; i < holidays.length; i++) {
                 var thisHoliday = holidays[i];
 
-                // get attr with square brackets
+                // select the li with data-attr of the current holiday
+                // select data-attr with square brackets
                 var listItem = $(
                     "li[data-complete-date='" + thisHoliday.date + "']"
                 );
 
+                // if is part of the response then it is holiday
                 if (listItem) {
                     listItem.addClass("holiday");
                     listItem.text(listItem.text() + "- " + thisHoliday.name);
@@ -103,15 +122,26 @@ function printHoliday(date) {
     });
 }
 
+// Calendar generator
 function genCalendar(baseMonth, template) {
+    // clear previous display
     $(".month-list").html("");
-    // display giorni
+
+    // display days
     printMonth(template, baseMonth);
 
-    // ottieni festività mese corrente
+    // get holidays
     printHoliday(baseMonth);
+
+    // TODO: add baseMonth controller that turns off the buttons
 }
 
+/**
+ * Change month using moment.js method based on the type of operation passed
+ * @param {momentObj} baseMonth
+ * @param {handlebars template} template
+ * @param {operation} string
+ */
 function changeMonth(baseMonth, template, operation) {
     if (operation === "add") {
         if (baseMonth.month() != 11) {
@@ -127,4 +157,14 @@ function changeMonth(baseMonth, template, operation) {
         }
     }
     genCalendar(baseMonth, template);
+}
+
+/**
+ * Change locale
+ * @param {baseMonth}
+ * @param {locale}
+ */
+function changeLocale(baseMonth, locale = "en") {
+    baseMonth.locale(locale);
+    moment.locale(locale);
 }
