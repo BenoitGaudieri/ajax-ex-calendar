@@ -83,6 +83,16 @@ function printMonth(template, date) {
         var html = template(context);
         $(".month-list").append(html);
     }
+
+    // hide arrows if jan or dec
+    if (date.month() != 0 && date.month() != 11) {
+        $(".prev-month").show();
+        $(".next-month").show();
+    } else if (date.month() == 0) {
+        $(".prev-month").hide();
+    } else {
+        $(".next-month").hide();
+    }
 }
 
 // display holidays
