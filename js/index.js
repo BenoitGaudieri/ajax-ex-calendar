@@ -75,7 +75,7 @@ function printMonth(template, date) {
         var context = {
             class: "day " + "w" + thisDate.day(),
             day: thisDate.format("DD"),
-            week: thisDate.format("dddd"),
+            week: thisDate.format("ddd"),
             completeDate: thisDate.format("YYYY-MM-DD"),
         };
 
@@ -122,7 +122,9 @@ function printHoliday(date) {
                 // if is part of the response then it is holiday
                 if (listItem) {
                     listItem.addClass("holiday");
-                    listItem.text(listItem.text() + "- " + thisHoliday.name);
+                    listItem.append(
+                        "<span class='holy-d'>" + thisHoliday.name + "</span>"
+                    );
                 }
             }
         },

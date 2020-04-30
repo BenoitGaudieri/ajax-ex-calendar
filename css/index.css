@@ -5,7 +5,9 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Relaway", sans-serif;
+
+    background: linear-gradient(to right, #fdfbfb, #bcccdc 70%);
 }
 
 .container {
@@ -23,11 +25,18 @@ body {
 
 .calendar {
     width: 800px;
-    height: 700px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    background-color: #fff;
+    border: 2px solid #bcccdc;
+    border-radius: 8px;
+}
+
+.calendar--header {
+    margin-top: 20px;
 }
 
 /* .calendar--header {
@@ -52,7 +61,7 @@ li.holiday {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    /* grid-gap: 1px; */
+    grid-gap: 1px;
 }
 
 .w0:first-child {
@@ -90,7 +99,7 @@ li.holiday {
 .month-list li {
     width: 100px;
     height: 100px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 }
 
 .day {
@@ -98,4 +107,10 @@ li.holiday {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.day-d {
+    font-size: 50px;
+    flex-grow: 1;
 }
