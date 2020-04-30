@@ -20,12 +20,11 @@
     <div class="container">
 
 
-        <div class="button">
-            <button class="prev-month">Previous month</button>
-        </div>
-
         <div class="calendar">
             <div class="calendar--header">
+                <div class="button">
+                    <button class="prev-month">Previous month</button>
+                </div>
                 <h1 class="month"></h1>
                 <select name="locale" id="locale-sel">
                     <option value="en">English</option>
@@ -37,16 +36,16 @@
                     <option value="de">German</option>
                     <option value="zh-cn">Chinese</option>
                 </select>
+                <div class="button">
+                    <button class="next-month">Next month</button>
+                </div>
             </div>
 
+            <ul class="weeks-label"></ul>
             <ul class="month-list"></ul>
 
         </div>
 
-        <div class="button">
-            <button class="next-month">Next month</button>
-
-        </div>
 
     </div>
 
@@ -54,9 +53,9 @@
     <!-- Template Handlebars -->
     <script id="day-template" type="text/x-handlebars-template">
         <li class="{{class}}" data-complete-date="{{completeDate}}">
-            <div class="week-d">
+            <!-- <div class="week-d">
                 {{week}}
-            </div>
+            </div> -->
             <div class="day-d">
                 {{day}}
             </div>

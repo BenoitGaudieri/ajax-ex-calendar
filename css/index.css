@@ -36,7 +36,11 @@ body {
 }
 
 .calendar--header {
-    margin-top: 20px;
+    position: relative;
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 /* .calendar--header {
@@ -45,6 +49,9 @@ body {
 
 #locale-sel {
     margin-top: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 li.holiday {
@@ -56,12 +63,22 @@ li.holiday {
     text-transform: capitalize;
 }
 
-.month-list {
-    margin: 30px 0;
+/* Grid */
+.month-list,
+.weeks-label {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 1px;
+    grid-gap: 4px;
+}
+.weeks-label {
+    margin: 30px 0 15px;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.weeks-label li:first-child {
+    color: red;
 }
 
 .w0:first-child {
@@ -96,9 +113,9 @@ li.holiday {
     color: red;
 }
 
-.month-list li {
+.month-list li,
+.weeks-label li {
     width: 100px;
-    height: 100px;
     /* border: 1px solid #000; */
 }
 
@@ -108,9 +125,16 @@ li.holiday {
     align-items: center;
     flex-direction: column;
     margin-bottom: 10px;
+    cursor: default;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 50%;
 }
 
 .day-d {
     font-size: 50px;
     flex-grow: 1;
 }
+
+/* .day:hover {
+    background-color: #00b7ff63;
+} */
