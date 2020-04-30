@@ -12,9 +12,15 @@ body {
     margin: 0 auto;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
+
+/* .calendar--header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 
 li.holiday {
     color: red;
@@ -39,4 +45,11 @@ li.holiday {
     width: 100px;
     height: 100px;
     border: 1px solid #000;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
