@@ -32,8 +32,8 @@ body {
 }
 
 .calendar {
-    width: 800px;
-    height: 750px;
+    width: 490px;
+    height: 460px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -57,10 +57,10 @@ body {
     position: absolute;
     top: 40px;
     /* right: 50%; */
-    width: 140px;
-    height: 40px;
+    width: 90px;
+    height: 30px;
     padding: 0 10px;
-    font-size: 20px;
+    font-size: 10px;
     border: 1px solid #000;
     border-radius: 10px;
     outline: none;
@@ -71,7 +71,8 @@ li.holiday {
 }
 
 .month {
-    width: 300px;
+    width: 210px;
+    font-size: 20px;
 }
 
 .month,
@@ -85,7 +86,7 @@ li.holiday {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 4px;
+    grid-gap: 1px;
 }
 .weeks-label {
     margin: 30px 0 15px;
@@ -132,7 +133,11 @@ li.holiday {
 
 .month-list li,
 .weeks-label li {
-    width: 100px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
     /* border: 1px solid #000; */
 }
 
@@ -148,8 +153,12 @@ li.holiday {
 }
 
 .day-d {
-    font-size: 50px;
+    font-size: 20px;
     flex-grow: 1;
+}
+
+.holy-d {
+    font-size: 10px;
 }
 
 /* .day:hover {
